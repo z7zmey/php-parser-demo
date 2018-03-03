@@ -161,6 +161,7 @@ h1, h2,h3
   transition: all 100ms linear;
   float: left;
   margin-top: 50px;
+  font-size: 12px;
 }
 .sidebar-area{
   position: absolute;

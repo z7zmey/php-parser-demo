@@ -6,24 +6,52 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/z7zmey/php-parser/comment"
+	"github.com/z7zmey/php-parser/node"
+	"github.com/z7zmey/php-parser/php5"
+	"github.com/z7zmey/php-parser/php7"
+	"github.com/z7zmey/php-parser/position"
+	"github.com/z7zmey/php-parser/visitor"
 )
 
 func main() {
+	http.HandleFunc("/parse", parseHandler)
 	http.Handle("/", http.FileServer(http.Dir("./www")))
 	http.HandleFunc("/_ah/health", healthCheckHandler)
 	log.Print("Listening on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
-func handle(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.NotFound(w, r)
-		return
+func parseHandler(w http.ResponseWriter, r *http.Request) {
+	var nodes node.Node
+	var comments comment.Comments
+	var positions position.Positions
+
+	src := bytes.NewBufferString(r.FormValue("script"))
+	phpVersion := r.FormValue("phpVersion")
+
+	if phpVersion == "php5" {
+		nodes, comments, positions = php5.Parse(src, "input.php")
+	} else {
+		nodes, comments, positions = php7.Parse(src, "input.php")
 	}
-	fmt.Fprint(w, "Hello world!")
+
+	nsResolver := visitor.NewNamespaceResolver()
+	nodes.Walk(nsResolver)
+
+	dumper := visitor.Dumper{
+		Writer:     w,
+		Indent:     "",
+		Comments:   comments,
+		Positions:  positions,
+		NsResolver: nsResolver,
+	}
+	nodes.Walk(dumper)
 }
 
 func healthCheckHandler(w http.ResponseWriter, r *http.Request) {

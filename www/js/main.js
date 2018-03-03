@@ -6,6 +6,28 @@ var editor = ace.edit("editor", {
     theme: "ace/theme/chrome",
 })
 
+var wto;
+editor.on("change", function(e) {
+    clearTimeout(wto);
+    wto = setTimeout(function() {
+        var src = editor.getValue()
+        requestToParser(src)
+    }, 300);
+});
+
+function requestToParser(src) {
+    $.ajax({
+        url: "/parse",
+        data: {
+            script: src
+        },
+        type: 'POST',
+        success: function(result) {
+            $("#output").text(result);
+        }
+    });
+}
+
 editor.insert(`<?php
 
 namespace Foo;
