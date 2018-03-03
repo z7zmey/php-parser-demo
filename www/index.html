@@ -10,11 +10,11 @@
 		<title>Php parser on Go</title>
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 		<link href="css/main.css" type="text/css" rel="stylesheet">
+		<link href="css/ace.css" type="text/css" rel="stylesheet">
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/png" href="/favicon.png">
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
-		<script type="text/javascript" src="js/main.js"></script>
 	</head>
 	<body>
 		<h1 class="sr-only">Php parser on Go</h1>
@@ -28,27 +28,7 @@
 		<a href="https://github.com/z7zmey/php-parser" target="_blank" class="z-index"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 		<section class="code-area">
 			<div class="code-area_left code-box">
-				<h1 class="code-area__title">Php code type here</h1>
-				<div contenteditable="" class="code-box__textarea">
-					$doc = new DOMDocument();<br>
-					$doc->loadHTML ( $data );<br>
-					$searchNodes = $doc->getElementsByTagName( "a" );<br>
-					echo $searchNodes[ 0 ]->getAttribute( 'href' );<br>
-					Вебмастеры часто сталкиваются с такой проблемой, когда нужно взять с какого-либо сайта определенную информацию и перенести ее на другой. Можно сначала сохранить информацию на промежуточный носитель, а уже с него загрузить куда-либо, но подобный подход не всегда удобен. В некоторых случаях гораздо быстрее залить парсер на сам сайт, поддерживающий PHP и запустить его удаленно, чтобы он автоматически спарсил информацию и загрузил ее в базу данных ресурса.
-					Среди уже готовых решений имеются популярные вроде Content Downloader и ZennoPoster, они конечно очень удобны и понятны любому человеку, даже незнакомому с программированием, однако имеют некоторые минусы. К примеру, они платные и не обладают достаточной гибкостью, которую можно вдохнуть в обычный php скрипт. Тем более, что разработка сложного парсера на них нисколько не уступает по времени написанию аналога на php.
-					<br>
-					<br>
-					Еще есть такая бесплатная вещь как iMacros – скриптовый язык, который может эмулировать действия пользователя в браузере, но тоже не везде такой подход работает лучшим образом.
-					Еще есть такая бесплатная вещь как iMacros – скриптовый язык, который может эмулировать действия пользователя в браузере, но тоже не везде такой подход работает лучшим образом.
-					Еще есть такая бесплатная вещь как iMacros – скриптовый язык, который может эмулировать действия пользователя в браузере, но тоже не везде такой подход работает лучшим образом.
-					Еще есть такая бесплатная вещь как iMacros – скриптовый язык, который может эмулировать действия пользователя в браузере, но тоже не везде такой подход работает лучшим образом.
-					<br>
-					Еще есть такая бесплатная вещь как iMacros – скриптовый язык, который может эмулировать действия пользователя в браузере, но тоже не везде такой подход работает лучшим образом.
-					<br>
-					<br>
-					<br>
-					Еще есть такая бесплатная вещь как iMacros – скриптовый язык, который может эмулировать действия пользователя в браузере, но тоже не везде такой подход работает лучшим образом.
-				</div>
+				<div id="editor" class="code-box__textarea"></div>
 			</div>
 			<div class="code-area_right code-box">
 				<h1 class="code-area__title">Php code output</h1>
@@ -76,5 +56,11 @@
 			</div>
 			<div class="helper"></div>
 		</section>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/ace.js" integrity="sha256-m7pa1Wh06liKoIDP19avGEdTGo+LoDNxeiHhVkq2hVQ=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/theme-twilight.js" integrity="sha256-UrKpY2EIdJ63SZGm2tet99Y+E2sQdt91vbg5Vh/qRvE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/theme-chrome.js" integrity="sha256-2jUy9rC6tFAo+szqQ4aLVd5dyICBOH+FBV8CUU8VyZs=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/mode-php.js" integrity="sha256-m75VgleccO4v2ej8avdkf7pJOAVfqlYhGGJ9VwfBhHw=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>
