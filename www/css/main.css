@@ -166,11 +166,11 @@ h1, h2,h3
 }
 .code-area_right{
   background-color: #fff;
-  overflow-x: scroll;
   padding: 0 0px 55px;
 }
 #output{
   padding: 10px 20px;
+  overflow-x: scroll;
 }
 .code-box{
   width: 50%;
