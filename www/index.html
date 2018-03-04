@@ -33,19 +33,55 @@
 		</header>
 		<a href="https://github.com/z7zmey/php-parser" target="_blank" class="z-index"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 		<section class="code-area">
-			<div class="code-area_top">
+			<!-- <div class="code-area_top">
 				<div class="code-box__title">
 					<h2>Put your Php code here</h2>
 				</div>
 				<div class="code-box__title">
 					<h2>Output</h2>
 				</div>
-			</div>
+			</div> -->
 			<div class="code-area_left code-box">
+				<div class="code-area_top">
+					<div class="code-box__title">
+						<h2>Put your Php code here</h2>
+					</div>
+				</div>
 				<div id="editor" class="code-box__textarea"></div>
 			</div>
-			<pre id="output" class="code-area_right code-box">
-			</pre>
+			<div class="code-area_right code-box">
+				<div class="code-area_top">
+					<div class="code-box__title">
+						<h2>Put your Php code here</h2>
+					</div>
+				</div>
+				<pre id="output">
+					<p>[*stmt.StmtList]
+  "Position": Pos{Line: 3-11 Pos: 8-110};
+  "Stmts":
+    [*stmt.Namespace]
+      "Position": Pos{Line: 3-3 Pos: 8-21};
+      "NamespaceName":
+        [*name.Name]
+          "Position": Pos{Line: 3-3 Pos: 18-20};
+          "Parts":
+            [*name.NamePart]
+              "Position": Pos{Line: 3-3 Pos: 18-20};
+              "Value": Foo;
+    [*stmt.Class]
+      "Position": Pos{Line: 5-11 Pos: 24-110};
+      "NamespacedName": Foo\Bar;
+      "PhpDocComment": ;
+      "ClassName":
+        [*node.Identifier]
+          "Position": Pos{Line: 5-5 Pos: 39-41};
+          "Value": Bar;
+      "Modifiers":
+        [*node.Identifier]
+          "Position": Pos{Line: 5-5 Pos: 24-31};
+          "Value"</p>
+				</pre>
+			</div>
 		</section>
 		<section class="sidebar-area">
 			<div class="sidebar-area__box">

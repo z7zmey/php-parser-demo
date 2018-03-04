@@ -4,6 +4,7 @@ var editor = ace.edit("editor", {
     autoScrollEditorIntoView: true,
     copyWithEmptySelection: true,
     theme: "ace/theme/chrome",
+    showGutter: false,
 })
 
 var wto;
