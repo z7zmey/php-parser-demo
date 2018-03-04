@@ -166,7 +166,6 @@ h1, h2,h3
 }
 .code-area_right{
   background-color: #fff;
-  padding: 0 0px 55px;
 }
 #output{
   padding: 10px 20px;
@@ -330,7 +329,6 @@ h1, h2,h3
   }
   .code-area_right {
     margin-top: 0;
-    padding-bottom: 30px;
   }
   h1,
   .h1{

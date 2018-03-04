@@ -1,17 +1,11 @@
 #editor { 
-    position: fixed;
-    top: 110px;
-    right: 20px;
-    bottom: 0;
-    left: 20px;
+    height: 100%;
 }
 
 .ace_content {
     background-color: #ebedf296;
 }
-.ace_print-margin{
-	display: none;
-}
+
 @media (min-width: 1px) and (max-width: 991px) {
 	#editor{
 		position: relative;
