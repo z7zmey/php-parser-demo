@@ -170,6 +170,7 @@ h1, h2,h3
 }
 #output{
   padding: 10px 20px;
+  height: 100%;
   overflow-x: scroll;
 }
 .code-box{
