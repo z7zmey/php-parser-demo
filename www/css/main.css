@@ -93,6 +93,7 @@ h1, h2,h3
 .z-index,
 .z-index img{
   z-index: 10005;
+  width: 150px;
 }
 .visible-xs-sm {
   display: none;
@@ -128,18 +129,27 @@ h1, h2,h3
   margin-right: 5px;
   font-weight: 600;
 }
-.logo{
+.header .logo{
   color: #fff;
   text-decoration: none;
   display: inline-block;
   vertical-align: top;
   margin-right: 10px;
 }
+.github-buttobs__list{
+  display: inline-block;
+  vertical-align: middle;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.github-buttobs__item{
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+}
 .logo img{
   width: 215px;
-}
-.header iframe{
-  margin-right: 10px !important;
 }
 .code-area{
   height: 100%;
@@ -349,20 +359,31 @@ h1, h2,h3
     text-align:  center;
   }
   .links-list{
-    max-width: 300px;
+    max-width: 380px;
     margin: 0 auto;
-    min-width: 300px;
+    min-width: 280px;
   }
   .links-list_bottom{
     position: relative;
     padding: 0;
+  }
+  .sidebar-area{
+    position: relative;
+    height: auto;
+    min-height: 100%;
   }
   .sidebar-area__box{
     display: inline-block;
     vertical-align: middle;
     text-align: left;
   }
-  .logo{
-    font-size: 16px;
+  .header .logo{
+    font-size: 15px;
+  }
+  .z-index img{
+    width: 120px;
+  }
+  .github-buttobs__list{
+    display: none;
   }
 }
