@@ -99,7 +99,7 @@ h1, h2,h3
   display: none;
 }
 .visible-xs {
-  display: none;
+  display: none !important;
 }
 .hidden-xs-sm {
   display: inline-block;
@@ -205,6 +205,9 @@ h1, h2,h3
   font-size: 15px;
   margin: 0;
   font-weight: 400;
+}
+.sidebar{
+  width: 215px;
 }
 .sidebar-area{
   position: absolute;
@@ -315,8 +318,15 @@ h1, h2,h3
   .visible-sm {
     display: inline-block;
   }
-  .code-box{
-    width: 100%;
+  .visible-xs-sm {
+    display: none;
+  }
+  .visible-xs {
+    display: none;
+  }
+  .code-area_left, 
+  .code-area_right{
+    width: 100% !important;
     min-height: 400px;
     height: auto;
     float: none;
@@ -329,6 +339,9 @@ h1, h2,h3
   }
   .code-area_right {
     margin-top: 0;
+  }
+  .flex .hbox{
+    overflow: scroll;
   }
   h1,
   .h1{
@@ -349,8 +362,11 @@ h1, h2,h3
     display: block;
     margin: 0 auto;
   }
-  .code-area{
+  .flex.hbox{
     display: none;
+  }
+  .flex.vbox{
+    overflow: initial;
   }
   .sidebar-area{
     display: block;
@@ -366,15 +382,20 @@ h1, h2,h3
     position: relative;
     padding: 0;
   }
-  .sidebar-area{
+  .sidebar{
     position: relative;
     height: auto;
     min-height: 100%;
+    width: 100%;
+    margin-top: -50px;
   }
   .sidebar-area__box{
     display: inline-block;
     vertical-align: middle;
     text-align: left;
+  }
+  .header{
+    z-index: 10001;
   }
   .header .logo{
     font-size: 15px;
@@ -382,7 +403,14 @@ h1, h2,h3
   .z-index img{
     width: 120px;
   }
-  .github-buttobs__list{
+  .header .github-buttobs__list{
     display: none;
+  }
+  .github-buttobs__list{
+    margin: 15px auto 5px;
+    display:  block;
+  }
+  .github-buttobs__item{
+    margin-right: 5px;
   }
 }
