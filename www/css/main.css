@@ -359,7 +359,7 @@ h1, h2,h3
     margin: 0 auto;
   }
   .visible-xs {
-    display: block;
+    display: block !important;
     margin: 0 auto;
   }
   .flex.hbox{
