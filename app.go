@@ -6,10 +6,12 @@
 package main
 
 import (
+	"os"
 	"bytes"
 	"fmt"
 	"log"
 	"net/http"
+	"path/filepath"
 
 	"github.com/z7zmey/php-parser/comment"
 	"github.com/z7zmey/php-parser/node"
@@ -20,11 +22,14 @@ import (
 )
 
 func main() {
+
+	binDir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
+
 	http.HandleFunc("/parse", parseHandler)
-	http.Handle("/", http.FileServer(http.Dir("./www")))
+	http.Handle("/", http.FileServer(http.Dir(binDir + "/www")))
 	http.HandleFunc("/_ah/health", healthCheckHandler)
-	log.Print("Listening on port 8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Print("Listening on port 80")
+	log.Fatal(http.ListenAndServe(":80", nil))
 }
 
 func parseHandler(w http.ResponseWriter, r *http.Request) {
