@@ -11,16 +11,27 @@ var wto;
 editor.on("change", function(e) {
     clearTimeout(wto);
     wto = setTimeout(function() {
-        var src = editor.getValue()
-        requestToParser(src)
+        requestToParser()
     }, 300);
 });
 
+$('input.switch-imput').on("change", function(e) {
+    requestToParser()
+});
+
 function requestToParser(src) {
+    var src = editor.getValue()
+    var php5 = $('#switch-to-php5').is(':checked')
+    var positions = $('#switch-to-show-pos').is(':checked')
+    var comments = $('#switch-to-show-comments').is(':checked')
+
     $.ajax({
         url: "/parse",
         data: {
-            script: src
+            script: src,
+            php5: php5,
+            positions: positions,
+            comments: comments,
         },
         type: 'POST',
         success: function(result) {

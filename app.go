@@ -6,11 +6,11 @@
 package main
 
 import (
-	"os"
 	"bytes"
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 
 	"github.com/z7zmey/php-parser/comment"
@@ -26,7 +26,7 @@ func main() {
 	binDir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
 
 	http.HandleFunc("/parse", parseHandler)
-	http.Handle("/", http.FileServer(http.Dir(binDir + "/www")))
+	http.Handle("/", http.FileServer(http.Dir(binDir+"/www")))
 	http.HandleFunc("/_ah/health", healthCheckHandler)
 	log.Print("Listening on port 80")
 	log.Fatal(http.ListenAndServe(":80", nil))
@@ -38,12 +38,22 @@ func parseHandler(w http.ResponseWriter, r *http.Request) {
 	var positions position.Positions
 
 	src := bytes.NewBufferString(r.FormValue("script"))
-	phpVersion := r.FormValue("phpVersion")
+	isPhp5 := r.FormValue("php5")
+	isShowPositions := r.FormValue("positions")
+	isShowComments := r.FormValue("comments")
 
-	if phpVersion == "php5" {
+	if isPhp5 == "true" {
 		nodes, comments, positions = php5.Parse(src, "input.php")
 	} else {
 		nodes, comments, positions = php7.Parse(src, "input.php")
+	}
+
+	if isShowPositions == "false" {
+		positions = nil
+	}
+
+	if isShowComments == "false" {
+		comments = nil
 	}
 
 	nsResolver := visitor.NewNamespaceResolver()
