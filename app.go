@@ -15,11 +15,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/z7zmey/php-parser/comment"
 	"github.com/z7zmey/php-parser/parser"
 	"github.com/z7zmey/php-parser/php5"
 	"github.com/z7zmey/php-parser/php7"
-	"github.com/z7zmey/php-parser/position"
 	"github.com/z7zmey/php-parser/visitor"
 )
 
@@ -41,8 +39,6 @@ func main() {
 
 func parseHandler(w http.ResponseWriter, r *http.Request) {
 	var p parser.Parser
-	var comments comment.Comments
-	var positions position.Positions
 
 	src := bytes.NewBufferString(r.FormValue("script"))
 
@@ -52,15 +48,11 @@ func parseHandler(w http.ResponseWriter, r *http.Request) {
 		p = php7.NewParser(src, "input.php")
 	}
 
+	if r.FormValue("free_floating") == "true" {
+		p.WithFreeFloating()
+	}
+
 	p.Parse()
-
-	if r.FormValue("positions") == "true" {
-		positions = p.GetPositions()
-	}
-
-	if r.FormValue("comments") == "true" {
-		comments = p.GetComments()
-	}
 
 	for _, e := range p.GetErrors() {
 		io.WriteString(w, e.String()+"\n")
@@ -69,13 +61,7 @@ func parseHandler(w http.ResponseWriter, r *http.Request) {
 	nsResolver := visitor.NewNamespaceResolver()
 	p.GetRootNode().Walk(nsResolver)
 
-	dumper := visitor.Dumper{
-		Writer:     w,
-		Indent:     "",
-		Comments:   comments,
-		Positions:  positions,
-		NsResolver: nsResolver,
-	}
+	dumper := &visitor.GoDumper{Writer: w}
 	p.GetRootNode().Walk(dumper)
 }
 

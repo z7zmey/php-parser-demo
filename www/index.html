@@ -23,7 +23,7 @@
 		<a href="https://github.com/z7zmey/php-parser" target="_blank" class="z-index"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
 		<div class="hbox" style="height: 100vh">
-			<div class="flex vbox" >
+			<div class="flex vbox" style="height: 100vh">
 				<header class="header">
 					<div class="header-top">
 						<a class="logo" href="index.html"><p><span>Php</span>Parser written in Go</p></a>
@@ -60,7 +60,7 @@
 							</div>
 						</div>
 						<div class="flex" style="overflow: scroll">
-							<pre id="output"></pre>
+							<pre id="output" style="border-left: 1px lightgray dashed"></pre>
 						</div>
 					</div>
 				</div>
@@ -83,15 +83,9 @@
 							</li>
 							<li class="settings-list__item">
 								<!-- The Toggle -->
-								<p>Positions</p>
-								<input type="checkbox" class="switch-imput" id="switch-to-show-pos">
-								<label for="switch-to-show-pos"><i></i></label>
-							</li>
-							<li class="settings-list__item">
-								<!-- The Toggle -->
-								<p>Comments</p>
-								<input type="checkbox" class="switch-imput" id="switch-to-show-comments">
-								<label for="switch-to-show-comments"><i></i></label>
+								<p>Free-floating</p>
+								<input type="checkbox" class="switch-imput" id="switch-to-show-free-floating">
+								<label for="switch-to-show-free-floating"><i></i></label>
 							</li>
 						</ul>
 						<p class="visible-xs mobile-description">Support Php 5, Php 7, Ast</p>

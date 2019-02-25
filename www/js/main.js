@@ -7,6 +7,16 @@ var editor = ace.edit("editor", {
     showGutter: false,
 })
 
+var output = ace.edit("output", {
+    mode: "ace/mode/golang",
+    selectionStyle: "text",
+    autoScrollEditorIntoView: true,
+    copyWithEmptySelection: true,
+    theme: "ace/theme/chrome",
+    showGutter: false,
+    readOnly: true,
+})
+
 var wto;
 editor.on("change", function(e) {
     clearTimeout(wto);
@@ -20,22 +30,22 @@ $('input.switch-imput').on("change", function(e) {
 });
 
 function requestToParser(src) {
+    console.log("test")
     var src = editor.getValue()
     var php5 = $('#switch-to-php5').is(':checked')
-    var positions = $('#switch-to-show-pos').is(':checked')
-    var comments = $('#switch-to-show-comments').is(':checked')
+    var freefloating = $('#switch-to-show-free-floating').is(':checked')
 
     $.ajax({
         url: "/parse",
         data: {
             script: src,
             php5: php5,
-            positions: positions,
-            comments: comments,
+            free_floating: freefloating,
         },
         type: 'POST',
         success: function(result) {
-            $("#output").text(result);
+            output.setValue(result);
+            output.clearSelection()
         }
     });
 }
